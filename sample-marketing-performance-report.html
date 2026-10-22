@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sample Marketing Performance Report | Verandah Properties</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#008C82; --teal-deep:#006B63; --teal-wash:#E8F4F2;
+  --gold:#C9A227; --gold-wash:#FBF5E3;
+  --ink:#1F1F1F; --ink-strong:#0F0F0F; --muted:#5A5651;
+  --paper:#FFFFFF; --page:#F6F7F6; --line:#DCDFDD; --card:#FFFFFF;
+  --charcoal:#1A1A1A; --warn:#9A3B2E; --warn-wash:#FBEDEA;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --teal:#2BB3A8; --teal-deep:#5FCFC5; --teal-wash:#12302D;
+    --gold:#D9B74A; --gold-wash:#2E2814;
+    --ink:#E6E4E0; --ink-strong:#FFFFFF; --muted:#A8A39C;
+    --paper:#1B1D1C; --page:#121413; --line:#333836; --card:#1F2221;
+    --charcoal:#0C0D0D; --warn:#E59484; --warn-wash:#33201C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --teal:#2BB3A8; --teal-deep:#5FCFC5; --teal-wash:#12302D;
+  --gold:#D9B74A; --gold-wash:#2E2814;
+  --ink:#E6E4E0; --ink-strong:#FFFFFF; --muted:#A8A39C;
+  --paper:#1B1D1C; --page:#121413; --line:#333836; --card:#1F2221;
+  --charcoal:#0C0D0D; --warn:#E59484; --warn-wash:#33201C;
+  color-scheme: dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--page);color:var(--ink);font-family:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:400;font-size:17px;line-height:1.65}
+img{max-width:100%;display:block}
+b,strong{font-weight:600;color:var(--ink-strong)}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;color:var(--ink-strong);line-height:1.15;margin:0}
+h2{font-size:clamp(30px,4.4vw,40px);font-weight:600;margin-bottom:18px}
+h3{font-size:24px;font-weight:600;margin:28px 0 10px}
+p{margin:0 0 16px}
+.wrap{max-width:900px;margin:0 auto;background:var(--paper)}
+.pad{padding:0 clamp(20px,5vw,56px)}
+
+/* masthead */
+.mast{background:var(--charcoal);color:#fff;padding:22px clamp(20px,5vw,56px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--teal)}
+.brand{display:flex;align-items:center;gap:12px;font-size:15px;letter-spacing:.04em;color:#D8D6D2}
+.mono{width:38px;height:38px;border-radius:50%;background:#008C82;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#fff;font-weight:600}
+.issue{font-size:14px;color:#BDB9B3;text-align:right;line-height:1.5}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border-bottom:1px solid var(--line)}
+.hero-text{padding:40px clamp(20px,5vw,56px) 36px}
+.kicker{color:var(--teal);font-weight:500;font-size:15px;margin-bottom:10px}
+.hero h1{font-size:clamp(40px,6vw,58px);font-weight:600;margin-bottom:12px}
+.addr{color:var(--muted);font-size:15.5px;line-height:1.55}
+.hero-img{min-height:280px;background-size:cover;background-position:center}
+@media (max-width:720px){.issue{text-align:left}.hero{grid-template-columns:1fr}.hero-img{min-height:240px;order:-1}}
+
+/* recommendation */
+.stand{padding-top:40px;padding-bottom:8px}
+.rec{margin:22px 0 8px;border:1px solid var(--teal);border-radius:14px;overflow:hidden}
+.rec-top{background:var(--teal);color:#fff;padding:14px 22px;font-size:15px;font-weight:500}
+.rec-body{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:24px 22px;background:var(--teal-wash)}
+.rec-col{text-align:center}
+.rec-lbl{font-size:14px;color:var(--muted);margin-bottom:2px}
+.rec-num{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7vw,58px);font-weight:700;line-height:1;color:var(--ink-strong)}
+.rec-num.old{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;font-weight:600}
+.rec-arrow{font-size:30px;color:var(--teal)}
+.rec-foot{padding:14px 22px;font-size:15px;border-top:1px solid var(--line);background:var(--paper)}
+@media (max-width:520px){.rec-body{grid-template-columns:1fr;}.rec-arrow{transform:rotate(90deg);justify-self:center}}
+
+/* sections */
+section{padding-top:44px;padding-bottom:12px;border-top:1px solid var(--line);margin-top:28px}
+.secno{color:var(--gold);font-weight:600;font-size:14px;margin-bottom:6px}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 26px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:16px 14px;background:var(--card)}
+.tile .n{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;line-height:1;color:var(--teal-deep)}
+.tile .l{font-size:14.5px;color:var(--muted);margin-top:6px;line-height:1.35}
+@media (max-width:640px){.tiles{grid-template-columns:repeat(2,1fr)}}
+
+/* tables */
+.tbl{overflow-x:auto;margin:6px 0 8px;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:15.5px;min-width:520px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--page);font-weight:600;color:var(--ink-strong);font-size:14.5px}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr.hl td{background:var(--teal-wash)}
+tr.gold td{background:var(--gold-wash)}
+.cap{font-size:14px;color:var(--muted);margin:6px 2px 18px}
+
+/* callout */
+.note{border-left:3px solid var(--gold);background:var(--gold-wash);padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0}
+.note.teal{border-left-color:var(--teal);background:var(--teal-wash)}
+.note p:last-child{margin-bottom:0}
+
+/* ladder */
+.ladder{margin:12px 0 28px;border:1px solid var(--line);border-radius:14px;padding:20px 18px 10px;background:var(--card)}
+.ladder h4{font-family:'Jost',sans-serif;font-size:15px;font-weight:600;margin:0 0 12px;color:var(--ink-strong)}
+.rung{display:grid;grid-template-columns:150px 1fr 72px;align-items:center;gap:10px;margin-bottom:9px;font-size:14.5px}
+.rung .nm{color:var(--ink);line-height:1.25}
+.rung .nm small{display:block;color:var(--muted);font-size:12.5px}
+.bar{height:16px;border-radius:8px;background:var(--line);position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:#9FB7B4}
+.bar i.lsd{background:var(--muted)}
+.bar i.cur{background:var(--warn)}
+.bar i.new{background:var(--teal)}
+.rung .v{text-align:right;font-weight:600;color:var(--ink-strong)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+@media (max-width:520px){.rung{grid-template-columns:110px 1fr 60px}}
+
+/* comp cards */
+.comps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:10px 0 18px}
+.cc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);display:flex;flex-direction:column}
+.cc img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.cc-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cc-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.cc-a{font-weight:600;color:var(--ink-strong);font-size:16.5px;line-height:1.3}
+.cc-p{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ink-strong);white-space:nowrap;line-height:1}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;padding:2px 10px;border-radius:20px;background:var(--teal-wash);color:var(--teal-deep);width:max-content}
+.pill.lsd{background:var(--page);color:var(--muted);border:1px solid var(--line)}
+.cc-f{font-size:14px;color:var(--muted);line-height:1.45}
+.cc-n{font-size:14.5px;line-height:1.5;margin-top:4px}
+@media (max-width:640px){.comps{grid-template-columns:1fr}}
+
+/* details */
+details{border:1px solid var(--line);border-radius:12px;margin:14px 0 20px;background:var(--card)}
+summary{cursor:pointer;padding:14px 18px;font-weight:600;color:var(--teal-deep);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;font-weight:400;color:var(--teal)}
+details[open] summary::after{content:"–"}
+summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:12px}
+.dbody{padding:4px 18px 18px}
+
+/* summary list */
+ul.sum{padding-left:20px;margin:0 0 16px}
+ul.sum li{margin-bottom:9px}
+ul.plain{padding-left:20px}
+ul.plain li{margin-bottom:8px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 22px}
+.step{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--card)}
+.step .when{font-size:13.5px;color:var(--muted)}
+.step .what{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--ink-strong);line-height:1.1;margin:4px 0 6px}
+.step.now{border-color:var(--teal);background:var(--teal-wash)}
+.step p{font-size:14.5px;margin:0;line-height:1.5}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
+
+footer{margin-top:44px;background:var(--charcoal);color:#CFCBC5;padding:30px clamp(20px,5vw,56px) 34px;font-size:14px;line-height:1.6;border-top:3px solid var(--teal)}
+footer .sig{font-family:'Cormorant Garamond',serif;font-size:22px;color:#E3C35C;margin-bottom:10px;font-style:italic}
+footer b{color:#fff}
+footer a{color:#7FD3CB}
+footer .fine{color:#9C978F;font-size:12.5px;margin-top:14px}
+@media print{body{background:#fff}.wrap{max-width:none}details{break-inside:avoid}details>*{display:block}}
+
+.hero.solo{grid-template-columns:1fr;background:linear-gradient(135deg,var(--teal-wash),var(--paper) 70%)}
+.sample{display:inline-block;background:var(--gold);color:#1A1A1A;font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+.banner{background:var(--gold-wash);border-bottom:1px solid var(--line);padding:12px clamp(20px,5vw,56px);font-size:14.5px;color:var(--ink)}
+.status{display:flex;align-items:center;gap:14px;border:1px solid var(--teal);background:var(--teal-wash);border-radius:14px;padding:16px 20px;margin:20px 0 8px}
+.status .dot{width:14px;height:14px;border-radius:50%;background:var(--teal);flex:none;box-shadow:0 0 0 6px color-mix(in srgb,var(--teal) 25%,transparent)}
+.status b{font-size:17px}
+.funnel{margin:10px 0 26px}
+.fr{display:grid;grid-template-columns:150px 1fr 60px;gap:12px;align-items:center;margin-bottom:10px;font-size:15px}
+.fb{height:34px;border-radius:8px;background:var(--teal);display:flex;align-items:center;padding-left:12px;color:#fff;font-size:13.5px;font-weight:500;min-width:34px}
+.fr:nth-child(2) .fb{background:color-mix(in srgb,var(--teal) 75%,var(--gold))}
+.fr:nth-child(3) .fb{background:var(--gold);color:#1A1A1A}
+.fr .v{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;text-align:right;color:var(--ink-strong)}
+.chart{border:1px solid var(--line);border-radius:14px;padding:18px 18px 8px;background:var(--card);margin:12px 0 22px}
+.chart h4{font-family:'Jost',sans-serif;font-size:15px;font-weight:600;margin:0 0 10px;color:var(--ink-strong)}
+.chart svg{width:100%;height:auto;display:block}
+.chart .ax{fill:var(--muted);font-size:11px;font-family:'Jost',sans-serif}
+.chart .cbar{fill:var(--teal)}.chart .sh{fill:var(--gold)}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 20px}
+.q{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--card);font-size:15.5px}
+.q .who{font-size:13px;color:var(--muted);margin-top:8px}
+.q .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:12px;background:var(--teal-wash);color:var(--teal-deep);margin-bottom:8px}
+@media (max-width:640px){.quotes{grid-template-columns:1fr}.fr{grid-template-columns:100px 1fr 44px}}
+</style></head><body><div class="wrap">
+<header class="mast">
+  <div class="brand"><div class="mono">V</div>Verandah Properties, LLC</div>
+  <div class="issue">Report 2 of an ongoing series<br>Issued every Friday morning</div>
+</header>
+<div class="banner"><b>This is a sample report.</b> The property, names and figures are illustrative. It shows the format every Verandah owner receives each Friday while their property is on the market.</div>
+
+<div class="hero solo"><div class="hero-text">
+  <span class="sample">Sample Report</span>
+  <div class="kicker">Marketing Performance Report · Week Two</div>
+  <h1>1234 Sample Lane</h1>
+  <div class="addr">Orlando, FL · Sample Community<br>4 bed / 3 bath · 2,240 sq ft · 2-car garage · Listed at $2,950</div>
+</div></div>
+
+<div class="pad stand">
+  <h2>Where we stand</h2>
+  <div class="status"><div class="dot"></div><div><b>On track. No decision needed this week.</b><br><span style="font-size:15px;color:var(--muted)">The price is producing steady inquiries and showings.</span></div></div>
+  <p>Your investment property has been on the market for 14 days. It has produced <b>18 inquiries and 7 showings</b>, and two prospects are in active follow-up. Interest has held steady through the second week, and nobody who toured raised the rent as a concern. <b>We are not recommending any change this week.</b></p>
+</div>
+
+<section class="pad">
+  <div class="secno">Section One</div>
+  <h2>Activity at a glance</h2>
+  <div class="tiles">
+    <div class="tile"><div class="n">14</div><div class="l">Days on market</div></div>
+    <div class="tile"><div class="n">18</div><div class="l">Inquiries received</div></div>
+    <div class="tile"><div class="n">7</div><div class="l">Showings completed</div></div>
+    <div class="tile"><div class="n">2</div><div class="l">Prospects in active follow-up</div></div>
+  </div>
+
+  <h3>From inquiry to resident</h3>
+  <div class="funnel">
+    <div class="fr"><div>Inquiries</div><div class="fb" style="width:100%">Every renter who reached out</div><div class="v">18</div></div>
+    <div class="fr"><div>Showings</div><div class="fb" style="width:39%">39% toured</div><div class="v">7</div></div>
+    <div class="fr"><div>Active follow-up</div><div class="fb" style="width:11%"></div><div class="v">2</div></div>
+  </div>
+  <p>Seven of 18 inquiries turned into showings. That tells us the listing is doing its job: renters who see it want to tour it.</p>
+
+  <div class="chart">
+    <h4>Inquiries by day since launch</h4>
+    <svg viewBox="0 0 700 230" role="img" aria-label="Daily inquiries and showings"><line x1="30" x2="670" y1="200" y2="200" stroke="currentColor" opacity=".12"/><text class="ax" x="22" y="204" text-anchor="end">0</text><line x1="30" x2="670" y1="150" y2="150" stroke="currentColor" opacity=".12"/><text class="ax" x="22" y="154" text-anchor="end">1</text><line x1="30" x2="670" y1="100" y2="100" stroke="currentColor" opacity=".12"/><text class="ax" x="22" y="104" text-anchor="end">2</text><line x1="30" x2="670" y1="50" y2="50" stroke="currentColor" opacity=".12"/><text class="ax" x="22" y="54" text-anchor="end">3</text><rect class="cbar" x="36.0" y="50" width="33.7" height="150" rx="4"/><text class="ax" x="52.9" y="218" text-anchor="middle">1</text><rect class="cbar" x="81.7" y="100" width="33.7" height="100" rx="4"/><circle class="sh" cx="98.6" cy="88" r="6"/><text class="ax" x="98.6" y="218" text-anchor="middle">2</text><rect class="cbar" x="127.4" y="100" width="33.7" height="100" rx="4"/><circle class="sh" cx="144.3" cy="88" r="6"/><text class="ax" x="144.3" y="218" text-anchor="middle">3</text><rect class="cbar" x="173.1" y="150" width="33.7" height="50" rx="4"/><text class="ax" x="190.0" y="218" text-anchor="middle">4</text><rect class="cbar" x="218.9" y="100" width="33.7" height="100" rx="4"/><circle class="sh" cx="235.7" cy="88" r="6"/><text class="ax" x="235.7" y="218" text-anchor="middle">5</text><rect class="cbar" x="264.6" y="150" width="33.7" height="50" rx="4"/><text class="ax" x="281.4" y="218" text-anchor="middle">6</text><rect class="cbar" x="310.3" y="200" width="33.7" height="0" rx="4"/><text class="ax" x="327.1" y="218" text-anchor="middle">7</text><rect class="cbar" x="356.0" y="150" width="33.7" height="50" rx="4"/><circle class="sh" cx="372.9" cy="138" r="6"/><text class="ax" x="372.9" y="218" text-anchor="middle">8</text><rect class="cbar" x="401.7" y="100" width="33.7" height="100" rx="4"/><circle class="sh" cx="418.6" cy="88" r="6"/><text class="ax" x="418.6" y="218" text-anchor="middle">9</text><rect class="cbar" x="447.4" y="150" width="33.7" height="50" rx="4"/><text class="ax" x="464.3" y="218" text-anchor="middle">10</text><rect class="cbar" x="493.1" y="150" width="33.7" height="50" rx="4"/><circle class="sh" cx="510.0" cy="138" r="6"/><text class="ax" x="510.0" y="218" text-anchor="middle">11</text><rect class="cbar" x="538.9" y="200" width="33.7" height="0" rx="4"/><text class="ax" x="555.7" y="218" text-anchor="middle">12</text><rect class="cbar" x="584.6" y="150" width="33.7" height="50" rx="4"/><circle class="sh" cx="601.4" cy="138" r="6"/><text class="ax" x="601.4" y="218" text-anchor="middle">13</text><rect class="cbar" x="630.3" y="150" width="33.7" height="50" rx="4"/><text class="ax" x="647.1" y="218" text-anchor="middle">14</text></svg>
+    <div class="legend"><span style="--c:var(--teal)">Inquiries</span><span style="--c:var(--gold)">Day with a showing</span></div>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>Source</th><th class="r">Inquiries</th><th class="r">Share</th></tr></thead>
+    <tbody>
+      <tr><td>Zillow Rental Network</td><td class="r">13</td><td class="r">72%</td></tr>
+      <tr><td>Apartments.com</td><td class="r">2</td><td class="r">11%</td></tr>
+      <tr><td>Realtor.com</td><td class="r">2</td><td class="r">11%</td></tr>
+      <tr><td>Agent referral</td><td class="r">1</td><td class="r">6%</td></tr>
+      <tr class="hl"><td><b>Total</b></td><td class="r"><b>18</b></td><td class="r"><b>100%</b></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="pad">
+  <div class="secno">Section Two</div>
+  <h2>What we heard from showings</h2>
+  <p>Becky follows up personally after every showing. Here is what prospects told us this week.</p>
+  <div class="quotes">
+    <div class="q"><span class="tag">Strong interest</span><br>Loved the open kitchen and the backyard. Asked about move-in timing and our application process.<div class="who">Family of four · relocating for work</div></div>
+    <div class="q"><span class="tag">Strong interest</span><br>Said the home showed better in person than in the photos. Requesting a second visit with a family member.<div class="who">Couple · current lease ends next month</div></div>
+    <div class="q"><span class="tag">Not a fit</span><br>Liked the property but needs a move-in date two months out.<div class="who">Single professional</div></div>
+    <div class="q"><span class="tag">Not a fit</span><br>Looking for a private pool, which this property does not have.<div class="who">Couple · relocating from out of state</div></div>
+  </div>
+  <p>Neither prospect who stepped away raised the rent as a concern. Their reasons were timing and a feature the property does not have, not price.</p>
+</section>
+
+<section class="pad">
+  <div class="secno">Section Three</div>
+  <h2>The competition</h2>
+  <p>Comparable rentals nearby with 4 bedrooms, similar size, and rent within about 15% of yours.</p>
+  <div class="tiles">
+    <div class="tile"><div class="n">5</div><div class="l">Competing rentals on the market</div></div>
+    <div class="tile"><div class="n">$3,050</div><div class="l">Median asking rent</div></div>
+    <div class="tile"><div class="n">2 of 5</div><div class="l">Have cut their price</div></div>
+    <div class="tile"><div class="n">19</div><div class="l">Median days to lease (last 30 days)</div></div>
+  </div>
+  <details>
+    <summary>See the competing rentals</summary>
+    <div class="dbody"><div class="tbl"><table>
+      <thead><tr><th>Property</th><th class="r">Sq ft</th><th class="r">Days</th><th class="r">Rent</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td><b>1234 Sample Lane</b></td><td class="r">2,240</td><td class="r">14</td><td class="r"><b>$2,950</b></td><td>Your property</td></tr>
+        <tr><td>Competitor A</td><td class="r">2,310</td><td class="r">41</td><td class="r">$3,150</td><td>Cut from $3,295</td></tr>
+        <tr><td>Competitor B</td><td class="r">2,180</td><td class="r">9</td><td class="r">$2,995</td><td>Newly listed</td></tr>
+        <tr><td>Competitor C</td><td class="r">2,400</td><td class="r">33</td><td class="r">$3,050</td><td>Cut from $3,200</td></tr>
+        <tr><td>Competitor D</td><td class="r">2,050</td><td class="r">22</td><td class="r">$2,895</td><td>Smaller, no garage</td></tr>
+        <tr><td>Competitor E</td><td class="r">2,600</td><td class="r">17</td><td class="r">$3,300</td><td>Private pool</td></tr>
+      </tbody>
+    </table></div></div>
+  </details>
+  <p>Your property is priced below the median of the competition, and the two homes that started higher have already had to cut. That is the position we want: renters comparing their options see your property as the clear value.</p>
+</section>
+
+<section class="pad">
+  <div class="secno">Section Four</div>
+  <h2>Our read on pricing</h2>
+  <p>When a price is too high, the pattern shows up quickly: inquiries dry up, few of them turn into showings, and the prospects who do tour raise the rent as an objection. This week we are seeing none of those.</p>
+  <ul class="plain">
+    <li><b>Inquiries have held steady</b> into the second week rather than fading after launch.</li>
+    <li><b>Showings are converting</b>, at 39% of inquiries.</li>
+    <li><b>No prospect has raised the rent</b> as a reason for stepping away.</li>
+  </ul>
+  <p><b>Our recommendation is to hold at $2,950.</b> There is no decision we are asking you to make this week.</p>
+</section>
+
+<section class="pad">
+  <div class="secno">Section Five</div>
+  <h2>Our work this coming week</h2>
+  <ul class="plain">
+    <li>Following up with both interested prospects, including the second visit one couple requested.</li>
+    <li>Working every new inquiry personally, phone first and text second, with every prospect pointed to our Resident Selection Criteria before a showing.</li>
+    <li>Watching the five competing rentals daily for price changes or new listings.</li>
+    <li>Re-verifying the listing on every rental site as part of our weekly cycle.</li>
+  </ul>
+</section>
+
+<section class="pad">
+  <div class="secno">Section Six</div>
+  <h2>Campaign totals</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Measure</th><th class="r">Report 1</th><th class="r">Report 2</th></tr></thead>
+    <tbody>
+      <tr><td>Days on market</td><td class="r">7</td><td class="r">14</td></tr>
+      <tr><td>Inquiries, campaign to date</td><td class="r">11</td><td class="r">18</td></tr>
+      <tr><td>Showings, campaign to date</td><td class="r">3</td><td class="r">7</td></tr>
+      <tr><td>Applications received</td><td class="r">0</td><td class="r">0</td></tr>
+      <tr><td>Prospects in active follow-up</td><td class="r">1</td><td class="r">2</td></tr>
+      <tr><td>Asking rent</td><td class="r">$2,950</td><td class="r">$2,950</td></tr>
+      <tr class="hl"><td><b>Price change recommended</b></td><td class="r">No</td><td class="r"><b>No</b></td></tr>
+    </tbody>
+  </table></div>
+  <p>You receive an updated report every Friday morning for as long as your property is on the market, and Becky keeps you updated in between as showings happen and feedback comes in. When we think something needs to change, we will tell you, along with exactly what we recommend and why.</p>
+</section>
+
+<footer>
+  <div class="sig">Curating Lake Nona's Finest Rental Portfolio</div>
+  <b>Verandah Properties, LLC</b><br>
+  Pamela Syvertson, Owner &amp; Broker · License CQ1048619 · <a href="tel:4078550331">407-855-0331</a>
+  <div class="fine">Sample report for illustration only. The property, prospects, competitors and all figures shown are fictional. Actual reports are based on AppFolio, Rently and Stellar MLS data for the owner's own property.</div>
+</footer>
+</div></body></html>
